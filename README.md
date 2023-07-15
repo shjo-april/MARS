@@ -24,7 +24,8 @@ Weakly-supervised semantic segmentation aims to reduce labeling costs by trainin
 ```
 
 # Update
-[07/14/2023] Our MARS has been accepted to ICCV 2023 .
+[07/14/2023] Our MARS has been accepted to ICCV 2023. 🔥🔥🔥
+
 [04/25/2023] Released initial commits.
 
 # Setup
