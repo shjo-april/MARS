@@ -6,6 +6,11 @@
 This repository is the official implementation of "MARS: Model-agnostic Biased Object Removal without Additional Supervision
 for Weakly-Supervised Semantic Segmentation". Please feel free to reach out for any questions or discussions.
 
+# Update
+[07/14/2023] Our MARS has been accepted to ICCV 2023. 🔥🔥🔥
+
+[04/25/2023] Released initial commits.
+
 ### Abstract
 Weakly-supervised semantic segmentation aims to reduce labeling costs by training semantic segmentation models using weak supervision, such as image-level class labels. However, most approaches struggle to produce accurate localization maps and suffer from false predictions in class-related backgrounds (\emph{i.e.}, biased objects), such as detecting a railroad with the train class. Recent methods that remove biased objects require additional supervision for manually identifying biased objects for each problematic class and collecting their datasets by reviewing predictions, limiting their applicability to the real-world dataset with multiple labels and complex relationships for biasing. Following the first observation that biased features can be separated and eliminated by matching biased objects with backgrounds in the same dataset, we propose a fully-automatic/model-agnostic biased removal framework called MARS (\textbf{M}odel-\textbf{A}gnostic biased object \textbf{R}emoval without additional \textbf{S}upervision), which utilizes semantically consistent features of an unsupervised technique to eliminate biased objects in pseudo labels. Surprisingly, we show that MARS achieves new state-of-the-art results on two popular benchmarks, PASCAL VOC 2012 (val: 77.7\%, test: 77.2\%) and MS COCO 2014 (val: 49.4\%), by consistently improving the performance of various WSSS models by at least 30\% without additional supervision.
 
@@ -22,11 +27,6 @@ Weakly-supervised semantic segmentation aims to reduce labeling costs by trainin
   year={2023}
 }
 ```
-
-# Update
-[07/14/2023] Our MARS has been accepted to ICCV 2023. 🔥🔥🔥
-
-[04/25/2023] Released initial commits.
 
 # Setup
 Setting up for this project involves installing dependencies and preparing datasets. The code is tested on Ubuntu 20.04 with NVIDIA GPUs and CUDA installed. 
