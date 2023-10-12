@@ -72,5 +72,5 @@ Release our VOC/COCO weights and official results.
 |:-----:|:------------:|:----------------------------:|:-------:|:--------:|:--------:|
 | MARS | ResNet-101 | [VOC & COCO]() | 77.7% [link](http://host.robots.ox.ac.uk:8080/anonymous/JWM7SJ.html) | 77.2% [link](http://host.robots.ox.ac.uk:8080/anonymous/XEAPLX.html) | 49.4% |
 
-# Acknowledgment
-- This code is heavily borrowed from [RS+EPM](https://github.com/shjo-april/recurseed_and_edgepredictmix).
+<!-- # Acknowledgment
+- This code is heavily borrowed from [RS+EPM](https://github.com/shjo-april/recurseed_and_edgepredictmix). -->
