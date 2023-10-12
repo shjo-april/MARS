@@ -6,7 +6,7 @@
 This repository is the official implementation of "MARS: Model-agnostic Biased Object Removal without Additional Supervision
 for Weakly-Supervised Semantic Segmentation". Please feel free to reach out for any questions or discussions.
 
-[paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Jo_MARS_Model-agnostic_Biased_Object_Removal_without_Additional_Supervision_for_Weakly-Supervised_ICCV_2023_paper.pdf) [supp](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Jo_MARS_Model-agnostic_Biased_ICCV_2023_supplemental.pdf) [arXiv](https://arxiv.org/abs/2304.09913)
+[[paper]](https://openaccess.thecvf.com/content/ICCV2023/papers/Jo_MARS_Model-agnostic_Biased_Object_Removal_without_Additional_Supervision_for_Weakly-Supervised_ICCV_2023_paper.pdf) [[supp]](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Jo_MARS_Model-agnostic_Biased_ICCV_2023_supplemental.pdf) [[arXiv]](https://arxiv.org/abs/2304.09913)
 
 # Update
 [07/14/2023] Our MARS has been accepted to ICCV 2023. 🔥🔥🔥
