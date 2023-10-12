@@ -6,6 +6,8 @@
 This repository is the official implementation of "MARS: Model-agnostic Biased Object Removal without Additional Supervision
 for Weakly-Supervised Semantic Segmentation". Please feel free to reach out for any questions or discussions.
 
+[paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Jo_MARS_Model-agnostic_Biased_Object_Removal_without_Additional_Supervision_for_Weakly-Supervised_ICCV_2023_paper.pdf) [supp](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Jo_MARS_Model-agnostic_Biased_ICCV_2023_supplemental.pdf) [arXiv](https://arxiv.org/abs/2304.09913)
+
 # Update
 [07/14/2023] Our MARS has been accepted to ICCV 2023. 🔥🔥🔥
 
@@ -17,14 +19,16 @@ Weakly-supervised semantic segmentation aims to reduce labeling costs by trainin
 ![Overview](./resources/Overview.jpg)
 
 # Citation
-- Please cite our paper if the code is helpful to your research. [arxiv](https://arxiv.org/abs/2304.09913)
+- Please cite our paper if the code is helpful to your research.
 
 ```
-@article{jo2023mars,
-  title={MARS: Model-agnostic Biased Object Removal without Additional Supervision for Weakly-Supervised Semantic Segmentation},
-  author={Jo, Sanghyun and Yu, In-Jae and Kim, Kyungsu},
-  journal={arXiv preprint arXiv:2304.09913},
-  year={2023}
+@InProceedings{Jo_2023_ICCV,
+    author    = {Jo, Sanghyun and Yu, In-Jae and Kim, Kyungsu},
+    title     = {MARS: Model-agnostic Biased Object Removal without Additional Supervision for Weakly-Supervised Semantic Segmentation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {614-623}
 }
 ```
 
