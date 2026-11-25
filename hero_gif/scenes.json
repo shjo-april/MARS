@@ -1,0 +1,104 @@
+{
+ "title": "MARS",
+ "badge": "ICCV 2023",
+ "subtitle": "Model-agnostic Biased Object Removal without Additional Supervision for Weakly-Supervised Semantic Segmentation",
+ "tabs": ["1 · Problem", "2 · Separate", "3 · Select", "4 · Debias", "5 · Results"],
+ "problem": {
+  "head": "WSSS with image-level labels also segments class-related backgrounds: biased objects",
+  "columns": [["image", "Image"], ["gt", "Ground Truth"], ["wsss", "WSSS"]],
+  "rows": ["boat", "train"],
+  "list_title": "Problematic classes (35%)",
+  "list_sub": "class and its biased objects",
+  "list": [
+   ["aeroplane", "cloud and vapour trail"],
+   ["bird", "tree, flower, and rock"],
+   ["boat", "sea, river, lake, and dock"],
+   ["bottle", "cup and glass"],
+   ["potted plant", "plant"],
+   ["train", "railway and railroad"],
+   ["tv/monitor", "keyboard and server"]
+  ],
+  "messages": [
+   "Two images of the boat and train classes with their ground truth",
+   "The WSSS output also covers the sea and the railroad: biased objects",
+   "35% of the classes in PASCAL VOC 2012 have such biased objects"
+  ],
+  "note": "Paper Fig. 1(c) and 1(d) · examples of biased objects in the boat and train classes on PASCAL VOC 2012"
+ },
+ "separate": {
+  "head": "Observation 1: inside the WSSS output, USS features separate the biased object from the target",
+  "top": [["input.jpg", "Input", ""], ["wsss_output.png", "WSSS Output", "RS+EPM"]],
+  "bottom": [
+   ["a_uss_without_wsss.png", "(a) USS without WSSS", "(a) USS features of the whole image", "fails to detect the biased object"],
+   ["b_wsss_clustering.png", "(b) WSSS Clustering", "(b) WSSS features in the WSSS output", "cannot find it: the features are biased"],
+   ["c_uss_clustering.png", "(c) USS Clustering (Ours)", "(c) USS features in the WSSS output", "identifies the biased object"]
+  ],
+  "card_title": "K-means clustering with K = 2",
+  "card_sub": "The USS and WSSS features come from the same ViT-B backbone.",
+  "messages": [
+   "The WSSS output for the boat class includes a biased object next to the boats",
+   "(a) Without the WSSS output, USS features split the whole image instead",
+   "(b) WSSS features cannot separate the biased object: they are biased themselves",
+   "(c) USS features split the WSSS output into the boats (pink) and the biased object (orange)"
+  ],
+  "note": "Paper Fig. 2 · integration with WSSS and USS on one PASCAL VOC 2012 image · USS: unsupervised semantic segmentation"
+ },
+ "select": {
+  "head": "Observation 2: the biased object is closer to the backgrounds of other images",
+  "panels": [["points.jpg", "Image with Points"], ["other_cow.jpg", ""], ["other_person.jpg", ""]],
+  "others_title": "Other Images (Cow and Person)",
+  "points": {"target": [0.60, 0.62], "biased": [0.66, 0.88]},
+  "ends": {"target": [[0.50, 0.62], [0.14, 0.44]], "biased": [[0.50, 0.80], [0.14, 0.60]]},
+  "left_title": "Distance to the backgrounds of other images",
+  "left_rows": [
+   ["target", "Long distance: the target object"],
+   ["biased", "Short distance: the biased object"],
+   ["background", "Background regions of other images (by the USS method)"]
+  ],
+  "right_title": "Debiased centroid of each class",
+  "right_text": [
+   "The average of the top α% centroids that are most apart from the background centroids of all training images (α = 0.40).",
+   "More than 85% of the selected centroids are target centroids on PASCAL VOC 2012 (paper Fig. 8)."
+  ],
+  "messages": [
+   "K-means gives two candidate objects: which one is the biased object?",
+   "The candidate with the short distance to the backgrounds of other images is the biased object",
+   "The centroids most apart from the backgrounds give the debiased centroid of each class"
+  ],
+  "note": "Paper Fig. 3 and Sec. 3.2 · distances between the two separated objects and the background regions of other images in the same dataset"
+ },
+ "debias": {
+  "head": "From the conventional WSSS label to the debiased label",
+  "columns": [["image", "Image"], ["wsss", "Conventional WSSS"], ["debiased", "Debiased Labels"], ["ours", "Ours"]],
+  "rows": ["train", "boat", "dog"],
+  "cards": [
+   ["Sec. 3.1 · Training setup", "Conventional WSSS", "The label from the trained WSSS method includes the biased objects."],
+   ["Secs. 3.2 and 3.3 · Centroids and labels", "Debiased Labels", "WSSS foreground that is not similar to the debiased centroids becomes the biased class."],
+   ["Sec. 3.4 · Complementing", "Ours", "During training, the teacher's predictions fill the biased class, which restores non-biased objects."]
+  ],
+  "legend": "biased class (−1) in the debiased label",
+  "messages": [
+   "Three examples from the paper: the train, boat and dog classes",
+   "Conventional WSSS: the railroad and the sea are labelled as train and boat",
+   "Debiased labels: the biased objects are removed, and so are non-biased parts of the dog",
+   "Complementing restores the non-biased objects, and the biased objects stay removed"
+  ],
+  "note": "Paper Fig. 7 · effect of the proposed components (Secs. 3.1 to 3.4) on PASCAL VOC 2012 images"
+ },
+ "results": {
+  "head": "Segmentation results on the validation sets: RS+EPM and MARS",
+  "columns": [["image.jpg", "Image"], ["rsepm.png", "RS+EPM"], ["mars.png", "MARS (Ours)"], ["gt.png", "Ground Truth"]],
+  "rows": [["voc_boat", "VOC 2012 val"], ["voc_train", "VOC 2012 val"], ["coco_surfboard", "COCO 2014 val"]],
+  "cards": [
+   ["74.4 → 77.7", "mIoU · PASCAL VOC 2012 val", "RS+EPM → MARS (Ours) · ResNet-101"],
+   ["73.6 → 77.2", "mIoU · PASCAL VOC 2012 test", "RS+EPM → MARS (Ours) · ResNet-101"],
+   ["46.4 → 49.4", "mIoU · MS COCO 2014 val", "RS+EPM → MARS (Ours) · ResNet-101"],
+   ["+29% · +9%", "IoU of the train · boat classes", "over RS+EPM · PASCAL VOC 2012 val"]
+  ],
+  "messages": [
+   "RS+EPM: biased objects remain in the segmentation results",
+   "Model-agnostic: +6.3 on IRNet, +6.3 on SEAM, +2.2 on AdvCAM and +3.3 on RS+EPM (mIoU, VOC 2012 val)"
+  ],
+  "note": "Supplementary Fig. G (examples) · paper Tables 3 and 5 and Fig. 9 (numbers) · no additional supervision or dataset"
+ }
+}

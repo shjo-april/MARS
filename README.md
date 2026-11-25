@@ -8,6 +8,8 @@ for Weakly-Supervised Semantic Segmentation". Please feel free to reach out for 
 
 [[project page]](https://shjo-april.github.io/MARS/) [[paper]](https://openaccess.thecvf.com/content/ICCV2023/papers/Jo_MARS_Model-agnostic_Biased_Object_Removal_without_Additional_Supervision_for_Weakly-Supervised_ICCV_2023_paper.pdf) [[supp]](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Jo_MARS_Model-agnostic_Biased_ICCV_2023_supplemental.pdf) [[arXiv]](https://arxiv.org/abs/2304.09913)
 
+![MARS in five scenes: the biased problem, separating biased and target objects with USS features, selecting debiased centroids by the distance to backgrounds, from the conventional WSSS label to the debiased label, and the results](./resources/hero.gif)
+
 # Update
 [07/25/2026] Released the complete implementation of MARS (preprocessing, training, and evaluation).
 
@@ -180,6 +182,15 @@ python3 evaluate.py \
 --dataset VOC --root_dir ../VOC2012/ --domain validation \
 --tag "ResNet-101@VOC@RS+EPM_with_MARS"
 ```
+
+# Reproduce the hero GIF
+The GIF at the top is composed from panels of the paper figures (Figs. 1, 2, 3 and 7, and Fig. G of the supplementary material) in `hero_gif/panels/`, with the labels and numbers in `hero_gif/scenes.json`. It needs no GPU, model or dataset.
+```bash
+# write resources/hero.gif (NumPy and Pillow 8.2 or later, which is newer than the Pillow pinned in requirements.txt)
+python3 hero_gif/build_gif.py
+```
+- Every number in the GIF is taken from the paper (Secs. 1 and 4, Tables 3 and 5, Figs. 8 and 9).
+- The committed GIF was rendered on Windows with Segoe UI. On other systems the script falls back to the DejaVu Sans bundled with matplotlib.
 
 # Acknowledgment
 - This code is heavily borrowed from [RS+EPM](https://github.com/shjo-april/recurseed_and_edgepredictmix).
